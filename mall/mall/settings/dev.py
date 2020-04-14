@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',   # drf注册
+    'users.apps.UsersConfig'    # 注册Users
 ]
 
 MIDDLEWARE = [
@@ -223,3 +224,6 @@ REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'mall.tools.exceptions.exception_handler',
 }
+
+# 自定义用户模型类
+AUTH_USER_MODEL = 'users.User' # 子应用名.模型类名

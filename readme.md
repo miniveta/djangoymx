@@ -170,3 +170,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 添加导包路径
 import sys
 sys.path.insert(0, os.path.join(BASE_DIR, 'apis'))
+23. \djangoymx\mall\mall\apis>python ../../manage.py startapp users 新建子应用，并添加到配置项
+24. 添加模型类
+"
+from django.contrib.auth.models import AbstractUser
+class User(AbstractUser):
+    """用户模型类"""
+    mobile = models.CharField(max_length=11, unique=True, verbose_name='手机号')
+
+    class Meta:
+        db_table = 'tb_users'
+        verbose_name = '用户'
+        verbose_name_plural = verbose_name
+"
+配置项
+自定义用户模型类
+AUTH_USER_MODEL = 'users.User' # 子应用名.模型类名
+
+'users.apps.UsersConfig'  # users 注册
+25. python ../../manage.py makemigrations  # 创建迁移文件；python ../../manage.py migrate  # 执行迁移
