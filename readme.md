@@ -189,3 +189,14 @@ AUTH_USER_MODEL = 'users.User' # 子应用名.模型类名
 
 'users.apps.UsersConfig'  # users 注册
 25. python ../../manage.py makemigrations  # 创建迁移文件；python ../../manage.py migrate  # 执行迁移
+26. 修改hosts文件"c:\windows\system32\drivers\etc"添加"127.0.0.1   www.mall.site;127.0.0.1   api.mall.site"
+27. 跨域："pip install django-cors-headers"
+28. 添加应用 INSTALLED_APPS = ('corsheaders',  # corsheaders注册)
+29. MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware',  # 中间件 放到最上面]
+30. 添加白名单CORS CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080','http://localhost:8080','http://www.mall.site:8080','http://api.mall.site:8000')
+31. CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
+32. 配合白名单域名 ALLOWED_HOSTS = ['127.0.0.1','localhost','www.mall.site','api.mall.site']
+33. 新建子应用 mall/apis/verifications    "django-admin startapp verifications"
+34. 添加 pip install Pillow 补齐文件包括，，，后续除具体问题外，不再书写，具体的放在xmind。
+
+35. 出现cryptography is required for sha256_password or caching_sha2_password    安装 cryptography 

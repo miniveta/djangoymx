@@ -26,7 +26,12 @@ SECRET_KEY = '$_9j57e8y+6gl(*v)cuptf3kyav3*a&m+9a*=0$r88vx$s7$l7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'www.mall.site',
+    'api.mall.site'
+]
 
 
 # Application definition
@@ -39,10 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',   # drf注册
+    'corsheaders',  # corsheaders注册
     'users.apps.UsersConfig'    # 注册Users
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # 中间件
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mall.urls'
@@ -227,3 +235,13 @@ REST_FRAMEWORK = {
 
 # 自定义用户模型类
 AUTH_USER_MODEL = 'users.User' # 子应用名.模型类名
+
+# 添加白名单
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    'http://127.0.0.1:8080',
+    'http://localhost:8080',
+    'http://www.mall.site:8080',
+    'http://api.mall.site:8000',
+)
+CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
