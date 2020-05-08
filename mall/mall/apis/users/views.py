@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import CreateAPIView
 from .models import User
+from .serializers import UserSerializer
 # Create your views here.
-
-
 
 class UserNameView(APIView):
     # 用户名数量
@@ -16,8 +16,7 @@ class UserNameView(APIView):
             "username": username,
             "count": username_count
         }
-    return Response(data)
-
+        return Response(data)
 
 class MobileView(APIView):
     # 用户名mobile数量
@@ -29,4 +28,9 @@ class MobileView(APIView):
             "username": mobile,
             "count": mobile_count
         }
-    return Response(data)
+        return Response(data)
+
+class UsersView(CreateAPIView):
+    # 注册
+    serializer_class = UserSerializer
+
