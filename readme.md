@@ -3,7 +3,8 @@
 3.	打开."gitignore"文件任意位置添加".idea/"屏蔽上传
 4.  导入前端文件"front_files"
 5.  cd到"front_files"文件夹，打开命令行输入"  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash"
-6.  同级文件命令行输入"npm install -g live-server"；启动"live-server"
+6.  换源 npm install -g cnpm --registry=https://registry.npm.taobao.org
+    同级文件命令行输入"npm install -g live-server"；启动"live-server"
 7.  经测试前端文件已启动进行后端文件配置
 8.  进入"File | Settings | Project: djangoymx | Python Interpreter"添加虚拟环境
 9.  进入"File | Settings | Project: djangoymx | Python Interpreter"添加Django，djangorestframework，pymysql，django_redis；如果安装异常使用命令行在虚拟环境下操作（pip install django==1.11.11  # 安装django；pip install djangorestframework  # 安装drf；pip install pymysql   #  安装pymsql；pip install django_redis  #安装redis数据库）

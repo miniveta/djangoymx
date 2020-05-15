@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from rest_framework_jwt.views import obtain_jwt_token
+
 from .import views
 
 urlpatterns =[
@@ -10,4 +12,8 @@ urlpatterns =[
 
     # UsersView
     url(r'^users/$', views.UsersView.as_view()),
+
+    # jwt
+    url(r'^authorizations/$', obtain_jwt_token),
+
 ]

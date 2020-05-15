@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import datetime
 import os,sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -232,6 +232,19 @@ REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'mall.tools.exceptions.exception_handler',
 }
+
+# 配置项添加
+JWT_AUTH = {
+    # 自定义状态保持的响应内容
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'users.tools.jwt_response_payload_handler',
+    # JWT_ 的保存时间
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+}
+
+# 自定义的认证后端 使用我们自己在tools写认证机制
+AUTHENTICATION_BACKENDS = [
+    'users.tools.UsernameMobileLogin',
+]
 
 # 自定义用户模型类
 AUTH_USER_MODEL = 'users.User' # 子应用名.模型类名
